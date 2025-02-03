@@ -6,8 +6,8 @@ Este repositorio tiene la implementación completa del API GateWay para la ejecu
 
 Primero Clonar los siguientes repositorios que hacen parte del proyecto completo (las instrucciones de ejecucón se encuentran en cada repositorio respectivamente):
   * [Servidor Eureka](https://github.com/MrForero/toListo-test-EurekaServer)
-  * [Payment service]
-  * [user Service]
+  * [Payment service](https://github.com/MrForero/toListo-test-PaymentService)
+  * [user Service](https://github.com/MrForero/toListo-test-UserService)
   * [FCM Service]
 
 Despues, Clonar este repositorio
