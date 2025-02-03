@@ -1,14 +1,14 @@
 # API GATEWAY (PRUEBA TECNICA)
 
-Este repositorio tiene la implementación completa del API GateWay para la ejecución de servicios y gestion de la autenticación
+Este repositorio tiene la implementación completa del API GateWay para la ejecución de servicios y gestion de la autenticación, basado en una arquitectura de microservicios
 
 ## Descarga y ejecución del proyecto
 
 Primero Clonar los siguientes repositorios que hacen parte del proyecto completo (las instrucciones de ejecucón se encuentran en cada repositorio respectivamente):
-  *
-  * 
-  * 
-  *
+  * [Servidor Eureka]
+  * [Payment service]
+  * [user Service]
+  * [FCM Service]
 
 Despues, Clonar este repositorio
 ```bash
