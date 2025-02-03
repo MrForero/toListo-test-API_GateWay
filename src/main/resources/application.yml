@@ -1,0 +1,58 @@
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+spring:
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: users
+          uri: lb://USERS-SERVICE
+          predicates:
+            - Path=/usuarios/**
+        - id: payments
+          uri: lb://PAYMENTS-SERVICE
+          predicates:
+            - Path=/pagos/**
+        - id: notifications
+          uri: lb://FCM-SERVICE
+          predicates:
+            - Path=/notificaciones/**
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/realm-test
+          jwk-set-uri: http://localhost:8080/realms/realm-test/protocol/openid-connect/certs
+jwt:
+  auth:
+    converter:
+      resource-id: api-gateway-test
+      principle-attribute: preferred_username
+
+  kafka:
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: api-gateway-group
+      enable-auto-commit: false
+    security:
+      protocol: SASL_SSL
+      sasl:
+        mechanism: SCRAM-SHA-512
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="kafka_user" password="kafka_password";
+    ssl:
+      key-store-location: classpath:keystore.jks
+      key-store-password: password
+      key-password: password
