@@ -12,6 +12,9 @@ spring:
   main:
     web-application-type: reactive
     allow-bean-definition-overriding: true
+  webflux:
+    server:
+      type: netty
   application:
     name: api-gateway
   cloud:
@@ -29,6 +32,10 @@ spring:
           uri: lb://FCM-SERVICE
           predicates:
             - Path=/notificaciones/**
+        - id: websocket
+          uri: ws://localhost:8081/miWebSocket
+          predicates:
+            - Path=/miWebSocket
   security:
     oauth2:
       resourceserver:
